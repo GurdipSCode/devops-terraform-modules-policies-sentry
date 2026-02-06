@@ -1,0 +1,78 @@
+# -----------------------------
+# OPA / Rego
+# -----------------------------
+*.rego.tmp
+*.rego.bak
+bundle.tar.gz
+bundle.tgz
+bundles/
+data.json
+input.json
+coverage.json
+
+# OPA binaries
+opa
+opa.exe
+
+# -----------------------------
+# Test & Lint Artifacts
+# -----------------------------
+*.out
+*.test
+*.prof
+*.coverprofile
+
+# Conftest
+.conftest/
+conftest-results.json
+
+# -----------------------------
+# Build / CI Artifacts
+# -----------------------------
+dist/
+build/
+target/
+
+# -----------------------------
+# IDEs & Editors
+# -----------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+
+# -----------------------------
+# OS Files
+# -----------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Env / Secrets
+# -----------------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------------
+# Terraform (if policies validate TF)
+# -----------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+
+# -----------------------------
+# Kubernetes (if validating manifests)
+# -----------------------------
+*.rendered.yaml
+*.rendered.yml
