@@ -1,0 +1,71 @@
+{
+  "organization_slug": "my-org",
+  "organization_name": "My Organization",
+  "create_organization": false,
+  "teams": {
+    "backend": {
+      "name": "Backend Team"
+    },
+    "frontend": {
+      "name": "Frontend Team"
+    }
+  },
+  "projects": {
+    "api": {
+      "name": "API Service",
+      "platform": "python",
+      "teams": ["backend"],
+      "resolve_age": 168
+    },
+    "web_app": {
+      "name": "Web Application",
+      "platform": "react",
+      "teams": ["frontend"],
+      "resolve_age": 72
+    }
+  },
+  "issue_alerts": {
+    "high_error_rate": {
+      "project": "api",
+      "name": "High Error Rate",
+      "action_match": "any",
+      "filter_match": "all",
+      "frequency": 30,
+      "conditions": [
+        {
+          "first_seen_event": {}
+        }
+      ],
+      "actions": [
+        {
+          "notify_email": {
+            "target_type": "Team",
+            "target_identifier": "backend"
+          }
+        }
+      ],
+      "filters": []
+    }
+  },
+  "metric_alerts": {
+    "error_rate_spike": {
+      "project": "api",
+      "name": "Error Rate Spike",
+      "aggregate": "count()",
+      "time_window": 60,
+      "query": "event.type:error",
+      "threshold_type": "above",
+      "resolve_threshold": 100,
+      "triggers": [
+        {
+          "action_type": "email",
+          "target_type": "team",
+          "target_identifier": "backend",
+          "alert_threshold": 500,
+          "label": "critical",
+          "threshold_type": "above"
+        }
+      ]
+    }
+  }
+}
