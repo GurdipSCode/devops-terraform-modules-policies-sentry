@@ -1,0 +1,70 @@
+version: 1
+
+language:
+  include:
+    - rego
+    - yaml
+    - yml
+    - json
+    - md
+
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+
+  review_status: true
+
+  # Keep feedback high-signal
+  level: medium
+
+  # Don’t spam on generated or vendor content
+  ignore:
+    - vendor/**
+    - bundles/**
+    - dist/**
+    - build/**
+    - coverage.json
+    - "*.rendered.yaml"
+    - "*.rendered.yml"
+
+  # Focus on policy correctness, not bikeshedding
+  checks:
+    style: false
+    formatting: false
+    complexity: true
+    security: true
+    performance: true
+
+comments:
+  # Ask for explanations on policy intent
+  ask_for_clarification: true
+
+  # Prefer suggestions over blocking
+  tone: constructive
+
+opa:
+  enabled: true
+
+  # Encourage best practices
+  rules:
+    require_default_rule: true
+    avoid_undefined_results: true
+    no_print_statements: true
+    prefer_set_over_array: true
+
+rego:
+  # Help with policy quality
+  suggestions:
+    - explain_rule_intent
+    - highlight_missing_tests
+    - detect_shadowed_variables
+    - suggest_helpers_for_repeated_logic
+
+testing:
+  # Nudge toward test coverage
+  require_tests_for_new_policies: true
+  test_file_pattern: "*_test.rego"
+
+markdown:
+  spellcheck: false
